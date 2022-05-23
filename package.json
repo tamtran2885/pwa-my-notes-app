@@ -1,0 +1,21 @@
+{
+  "name": "pwa-first-app",
+  "version": "1.0.0",
+  "description": "Progressive Web App",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server -c-1"
+  },
+  "keywords": [
+    "pwa",
+    "progressive",
+    "web",
+    "app",
+    "complete"
+  ],
+  "author": "tam tran",
+  "license": "ISC",
+  "dependencies": {
+    "http-server": "^14.1.0"
+  }
+}
