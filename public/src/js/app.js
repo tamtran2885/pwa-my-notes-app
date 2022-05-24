@@ -1,3 +1,9 @@
+let deferredPrompt;
+
+if (!window.Promise) {
+    window.Promise = Promise;
+}
+
 // check if service worker feature is available in the browser
 const registerServiceWorker = async () => {   
     if ("serviceWorker" in navigator) {
@@ -9,5 +15,12 @@ const registerServiceWorker = async () => {
         }
     }
 }
+
+window.addEventListener("beforeinstallprompt", (event) => {
+    console.log("Before firing install banner");
+    event.preventDefault();
+    deferredPrompt = event;
+    return false;
+})
 
 registerServiceWorker();
