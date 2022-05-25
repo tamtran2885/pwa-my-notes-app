@@ -45,6 +45,7 @@ const createCard = () => {
 
   let cardTitleTextElement = document.createElement('h2');
   cardTitleTextElement.className = 'mdl-card__title-text';
+  cardTitleTextElement.style.color = "white";
   cardTitleTextElement.textContent = 'San Francisco Trip';
   cardTitle.appendChild(cardTitleTextElement);
 
@@ -57,13 +58,13 @@ const createCard = () => {
   sharedMomentsArea.appendChild(cardWrapper);
 }
 
-const displayCard = async () => {
+const displayCard = async (req, res) => {
   try {
     const result = await fetch('https://httpbin.org/get');
     createCard();
-    res.json({ data: result});
+    // res.json({ data: result});
   } catch (err) {
-    res.json({ message: err.message});
+    console.error(err);
   }
 }
 
