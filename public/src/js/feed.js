@@ -53,9 +53,19 @@ const createCard = () => {
   cardSupportingText.className = 'mdl-card__supporting-text';
   cardSupportingText.textContent = 'In San Francisco';
   cardSupportingText.style.textAlign = 'center';
+
+  let cardSavingButton = document.createElement("button");
+  cardSavingButton.textContent = "Save";
+  cardSavingButton.addEventListener("click", onSaveCard);
+  cardSupportingText.append(cardSavingButton);
   cardWrapper.appendChild(cardSupportingText);
+
   componentHandler.upgradeElement(cardWrapper);
   sharedMomentsArea.appendChild(cardWrapper);
+}
+
+const onSaveCard = (event) => {
+  console.log("save");
 }
 
 const displayCard = async (req, res) => {

@@ -1,6 +1,6 @@
 // Scope of this service workers is the whole app
-let CACHE_STATIC_VERSION = "static-v3";
-let CACHE_DYNAMIC_VERSION = "dynamic-v2"
+const CACHE_STATIC_VERSION = "static-v3";
+const CACHE_DYNAMIC_VERSION = "dynamic-v2"
 
 /***** ADD RESOURCES WHEN INSTALLING SERVICE WORKER *******/
 
@@ -64,7 +64,7 @@ self.addEventListener("activate", (event) => {
 // Open a sub-cache inside Cache Storage , to cache dynamic content
 const putInCache = async (request, response) => {
     const cache = await caches.open(CACHE_DYNAMIC_VERSION);
-    await cache.put(request, response);
+    // await cache.put(request.url, response);
 }
 
 // Check and get the url or path of dynamic content
@@ -74,7 +74,7 @@ const cacheFirst = async (request) => {
         return responseFromCache;
     }
     const responseFramework = await fetch(request);
-    putInCache(responseFramework.clone());
+    putInCache(request.url, responseFramework.clone());
     return responseFramework;
 }
 
